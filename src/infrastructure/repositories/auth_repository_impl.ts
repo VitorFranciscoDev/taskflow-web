@@ -7,24 +7,14 @@ export class AuthRepositoryImpl implements AuthRepository {
         private baseURL = "https://aaaaaaa/auth/"
     ) {}
 
-    async getUserByID(id: number): Promise<User> {
-        const response = await fetch(`${this.baseURL}${id}`);
+    async login(email: string, password: string): Promise<User> {
+        const response = await fetch(`${this.baseURL}login`);
 
         if(!response.ok) {
-            throw new Error("User not found");
+            throw new Error("Login Error");
         }
 
-        return await response.json();
-    }
-
-    async getUserByUUID(uuid: string): Promise<User> {
-        const response = await fetch(`${this.baseURL}${uuid}`);
-
-        if(!response.ok) {
-            throw new Error("User not found");
-        }
-
-        return await response.json();
+        return response.json();
     }
 
     async addUser(user: User): Promise<void> {
@@ -42,16 +32,6 @@ export class AuthRepositoryImpl implements AuthRepository {
 
         if(!response.ok) {
             throw new Error("Error creating user");
-        }
-    }
-
-    async deleteUser(uuid: string): Promise<void> {
-        const response = await fetch(`${this.baseURL}auth/${uuid}`, {
-            method: "DELETE",
-        });
-
-        if(!response.ok) {
-            throw new Error("Error deleting user");
         }
     }
 }

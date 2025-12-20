@@ -6,44 +6,35 @@ export class AuthUseCases {
         private authRepository: AuthRepository,
     ) {}
 
-    async getUserByID(id: number): Promise<User> {
-        if(id <= 0) {
-            throw new Error("Invalid ID")
+    // Login
+    async login(email: string, password: string): Promise<User> {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailRegex.test(email)) {
+            throw new Error("Invalid Email");
         }
 
-        return await this.authRepository.getUserByID(id)
-    }
-
-    async getUserByUUID(uuid: string): Promise<User> {
-        if(uuid === "") {
-            throw new Error("Invalid UUID")
+        if(password.length < 8) {
+            throw new Error("Invalid Password");
         }
 
-        return await this.authRepository.getUserByUUID(uuid)
+        return await this.authRepository.login(email, password);
     }
 
+    // Add User
     async addUser(user: User): Promise<void> {
         if(user.name.length < 3) {
-            throw new Error("Invalid Name")
+            throw new Error("Invalid Name");
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(!emailRegex.test(user.email)) {
-            throw new Error("Invalid Email")
+            throw new Error("Invalid Email");
         }
 
         if(user.password.length < 8) {
-            throw new Error("Invalid Password")
+            throw new Error("Invalid Password;")
         }
 
-        await this.authRepository.addUser(user)
-    }
-
-    async deleteUser(uuid: string): Promise<void> {
-        if(uuid === "") {
-            throw new Error("Invalid UUID")
-        }
-
-        await this.authRepository.deleteUser(uuid)
+        await this.authRepository.addUser(user);
     }
 }
