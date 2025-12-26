@@ -1,34 +1,67 @@
-<script>
+<script setup lang="ts">
+    import { computed } from 'vue';
+
     interface Props {
-        model: string;
+        modelValue: string;
         label:string;
         type: string;
         placeholder: string;
-        required: boolean;
-        error: string;
     }
+
+    const props = withDefaults(defineProps<Props>(), {
+        type: 'text',
+        placeholder: '',
+    });
+
+    const emit = defineEmits<{
+        'update:modelValue': [value: string]
+    }>();
+
+    const value = computed({
+        get: () => props.modelValue,
+        set: (val) => emit('update:modelValue', val)
+    });
 </script>
 
 <template>
     <div class="text-field">
-        <label class="label">
-            {{ label }}
-            <span v-if="required" class="required">*</span>
-        </label>
+        <label class="label">{{ label }}</label>
 
-        <input
-            v-model="value"
-            :type="type"
-            :placeholder="placeholder"
-            :required="required"
-            class="input"
-            :class="{ 'input-error': error}"
-        >
-
-        <span v-if="error" class="error-message">{{ error }}</span>
+        <fieldset class="fieldset">
+            <input
+                v-model="value"
+                :type="type"
+                :placeholder="placeholder"
+                class="input"
+            >
+        </fieldset>
     </div>
 </template>
 
 <style scoped>
-    
+    .text-field {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .label {
+        color: white;
+        align-self: flex-start;
+    }
+
+    .fieldset {
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .input {
+        background-color: #334155;
+        color: white;
+        width: 300px;
+        height: 50px;
+        padding-left: 10px;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
 </style>

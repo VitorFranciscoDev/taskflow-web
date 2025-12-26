@@ -11,6 +11,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: hsl(225, 25%, 8%);
+  }
+
+  html, body, #app {
+    height: 100%;
   }
 </style>
