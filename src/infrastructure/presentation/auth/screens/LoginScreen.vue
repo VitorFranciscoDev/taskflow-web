@@ -15,6 +15,10 @@
 <template>
     <div class="background">
         <form @submit="handleSubmit" class="form">
+            <h1 class="title">Bem-vindo de volta</h1>
+
+            <p class="subtitle">Entre na sua conta TaskFlow</p>
+
             <TextField
                 v-model="email"
                 label="Email"
@@ -47,10 +51,19 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding: 25px;
+        padding: 50px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .title {
+        color: white;
+    }
+
+    .subtitle {
+        color: white;
+        margin: 15px 15px 30px 15px;
     }
 </style>
