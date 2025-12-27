@@ -5,12 +5,13 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/login',
+            name:'landing',
+            component: () => import('@/infrastructure/presentation/auth/screens/LandingPage.vue'),
         },
         {
             path: '/login',
             name: 'login',
-            component: () => import('@/infrastructure/presentation/auth/screens/LoginScreen.vue'),
+            component: () => import('@/infrastructure/presentation/auth/screens/LoginPage.vue'),
         },
     ]
 });
