@@ -1,5 +1,15 @@
 <script setup lang="ts">
+    import { useRouter } from 'vue-router';
 
+    const router = useRouter();
+
+    const navigateToSignUp = () => {
+        router.push('/signup');
+    }
+
+    const navigateToLogin = () => {
+        router.push('/login');
+    }
 </script>
 
 <template>
@@ -8,8 +18,8 @@
             <h1 class="logo">TaskFlow</h1>
 
             <div class="auth">
-                <button class="signup">Sign Up</button>
-                <button class="login">Login</button>
+                <button class="signup" @click="navigateToSignUp">Sign Up</button>
+                <button class="login" @click="navigateToLogin">Login</button>
             </div>
         </nav>
     </header>
