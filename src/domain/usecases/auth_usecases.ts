@@ -6,7 +6,6 @@ export class AuthUseCases {
         private authRepository: AuthRepository,
     ) {}
 
-    // Login
     async login(email: string, password: string): Promise<User> {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -20,7 +19,6 @@ export class AuthUseCases {
         return await this.authRepository.login(email, password);
     }
 
-    // Add User
     async addUser(user: User): Promise<void> {
         if (user.name.length < 3) {
             throw new Error("Invalid Name");
@@ -35,6 +33,6 @@ export class AuthUseCases {
             throw new Error("Invalid Password;")
         }
 
-        await this.authRepository.addUser(user);
+        await this.authRepository.register(user);
     }
 }

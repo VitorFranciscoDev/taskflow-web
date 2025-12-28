@@ -15,8 +15,8 @@ export class AuthRepositoryImpl implements AuthRepository {
         return response.json();
     }
 
-    async addUser(user: User): Promise<void> {
-        const response = await fetch(`${baseURL}register`, {
+    async register(user: User): Promise<void> {
+        const response = await fetch(`${baseURL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +29,7 @@ export class AuthRepositoryImpl implements AuthRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Error creating user");
+            throw new Error("Error registering user");
         }
     }
 }

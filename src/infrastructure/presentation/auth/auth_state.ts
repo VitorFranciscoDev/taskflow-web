@@ -1,8 +1,8 @@
-import { User } from "@/domain/entities/user";
-import { AuthUseCases } from "@/domain/usecases/auth_usecases";
-import { AuthRepositoryImpl } from "@/infrastructure/repositories/auth_repository_impl";
-import { defineStore } from "pinia";
-import { ref } from "vue";
+import {User} from "@/domain/entities/user";
+import {AuthUseCases} from "@/domain/usecases/auth_usecases";
+import {AuthRepositoryImpl} from "@/infrastructure/repositories/auth_repository_impl";
+import {defineStore} from "pinia";
+import {ref} from "vue";
 
 export const useAuthStore = defineStore('auth', () => {
     const user = ref<User | null>(null);
@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', () => {
             user.value = loggedUser;
 
             return loggedUser;
-        } catch(e) {
+        } catch (e) {
             throw e;
         }
     }
@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
     async function addUser(newUser: User) {
         try {
             await authUseCases.addUser(newUser);
-        } catch(e) {
+        } catch (e) {
             throw e;
         }
     }
