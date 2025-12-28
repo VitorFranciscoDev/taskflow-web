@@ -1,9 +1,17 @@
 <script lang="ts" setup>
 
+interface Props {
+  text?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  text: ''
+})
+
 </script>
 
 <template>
-  <button class="button">Log In</button>
+  <button class="button">{{ props.text }}</button>
 </template>
 
 <style scoped>

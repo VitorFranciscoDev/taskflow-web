@@ -1,11 +1,7 @@
-<script lang="ts" setup>
-import Header from '../components/Header.vue';
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div class="background">
-    <Header/>
-
     <main class="main">
       <h1 class="title">Project Management Made Simple</h1>
 

@@ -3,6 +3,7 @@ import {useRouter} from 'vue-router';
 import {RouteDefs} from '@/config/navigation'
 
 const navigateToLogin = () => router.push(RouteDefs.LoginPage.path);
+const navigateToSignUp = () => router.push(RouteDefs.SignUpPage.path);
 const navigateToLandingPage = () => router.push(RouteDefs.LandingPage.path);
 
 const router = useRouter();
@@ -11,10 +12,12 @@ const router = useRouter();
 <template>
   <header class="header">
     <nav class="nav">
-      <h1 class="logo">TaskFlow</h1>
+      <h1 class="logo" @click="navigateToLandingPage">
+        Taskflow
+      </h1>
 
       <div class="auth">
-        <button class="signup" @click="navigateToLandingPage">Sign Up</button>
+        <button class="signup" @click="navigateToSignUp">Sign Up</button>
         <button class="login" @click="navigateToLogin">Login</button>
       </div>
     </nav>
@@ -34,6 +37,7 @@ const router = useRouter();
 
 .logo {
   color: white;
+  cursor: pointer;
 }
 
 .auth {

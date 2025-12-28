@@ -2,20 +2,17 @@
 import Button from '../components/Button.vue';
 import TextField from '../components/TextField.vue';
 import {ref} from 'vue';
+import Form from "@/infrastructure/presentation/auth/components/Form.vue";
 
 const name = ref('');
 const email = ref('');
 const password = ref('');
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-}
 </script>
 
 <template>
   <div class="background">
-    <form class="form" @submit="handleSubmit">
+    <Form>
       <h1 class="title">Create your account</h1>
 
       <p class="subtitle">Start to organize your projects</p>
@@ -41,8 +38,8 @@ const handleSubmit = (e) => {
           type="password"
       />
 
-      <Button></Button>
-    </form>
+      <Button text="Sign Up"/>
+    </Form>
   </div>
 </template>
 
@@ -51,19 +48,6 @@ const handleSubmit = (e) => {
   width: 100%;
   height: 100%;
   background-color: #020617;
-}
-
-.form {
-  background-color: #1E293B;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 50px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .title {

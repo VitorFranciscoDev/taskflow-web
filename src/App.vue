@@ -1,9 +1,13 @@
 <script lang="ts" setup>
 import {RouterView} from 'vue-router';
+import Header from "@/infrastructure/presentation/auth/components/Header.vue";
 </script>
 
 <template>
-  <RouterView/>
+  <main>
+    <Header/>
+    <RouterView/>
+  </main>
 </template>
 
 <style>
@@ -12,6 +16,7 @@ import {RouterView} from 'vue-router';
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
 }
 
 html, body, #app {

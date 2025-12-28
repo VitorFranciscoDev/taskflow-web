@@ -1,23 +1,20 @@
-<script setup>
+<script lang="ts" setup>
 import Button from '../components/Button.vue';
 import TextField from '../components/TextField.vue';
 import {ref} from 'vue';
+import Form from "@/infrastructure/presentation/auth/components/Form.vue";
 
 const email = ref('');
 const password = ref('');
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-}
 </script>
 
 <template>
   <div class="background">
-    <form class="form" @submit="handleSubmit">
-      <h1 class="title">Bem-vindo de volta</h1>
+    <Form>
+      <h1 class="title">Welcome back</h1>
 
-      <p class="subtitle">Entre na sua conta TaskFlow</p>
+      <p class="subtitle">Login with your Taskflow account</p>
 
       <TextField
           v-model="email"
@@ -29,12 +26,12 @@ const handleSubmit = (e) => {
       <TextField
           v-model="password"
           label="Password"
-          placeholder="12345678"
+          placeholder="mypassword"
           type="password"
       />
 
-      <Button></Button>
-    </form>
+      <Button text="Login"/>
+    </Form>
   </div>
 </template>
 
@@ -43,19 +40,6 @@ const handleSubmit = (e) => {
   width: 100%;
   height: 100%;
   background-color: #020617;
-}
-
-.form {
-  background-color: #1E293B;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 50px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .title {
