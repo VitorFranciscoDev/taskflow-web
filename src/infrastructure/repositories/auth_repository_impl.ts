@@ -1,16 +1,14 @@
-import { User } from "@/domain/entities/user";
-import { AuthRepository } from "@/domain/repositories/auth_repository";
-import { json } from "stream/consumers";
+import {User} from "@/domain/entities/user";
+import {AuthRepository} from "@/domain/repositories/auth_repository";
+
+import {baseURL} from '@/main'
 
 export class AuthRepositoryImpl implements AuthRepository {
-    constructor(
-        private baseURL = "https://aaaaaaa/auth/"
-    ) {}
 
     async login(email: string, password: string): Promise<User> {
-        const response = await fetch(`${this.baseURL}login`);
+        const response = await fetch(`${baseURL}/login`);
 
-        if(!response.ok) {
+        if (!response.ok) {
             throw new Error("Login Error");
         }
 
@@ -18,7 +16,7 @@ export class AuthRepositoryImpl implements AuthRepository {
     }
 
     async addUser(user: User): Promise<void> {
-        const response = await fetch(`${this.baseURL}register`, {
+        const response = await fetch(`${baseURL}register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -30,7 +28,7 @@ export class AuthRepositoryImpl implements AuthRepository {
             })
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             throw new Error("Error creating user");
         }
     }
