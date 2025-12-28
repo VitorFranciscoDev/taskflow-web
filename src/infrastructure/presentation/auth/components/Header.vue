@@ -51,11 +51,12 @@ const router = useRouter();
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
-  margin-right: 10px
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .signup:hover {
-  background-color: rgba(255, 255, 255, 0.615);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .login {
