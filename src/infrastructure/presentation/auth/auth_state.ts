@@ -3,12 +3,10 @@ import {AuthUseCases} from "@/domain/usecases/auth_usecases";
 import {AuthRepositoryImpl} from "@/infrastructure/repositories/auth_repository_impl";
 import {defineStore} from "pinia";
 import {ref} from "vue";
+import {authUseCases} from "@/infrastructure/infrastructure";
 
 export const useAuthStore = defineStore('auth', () => {
     const user = ref<User | null>(null);
-
-    const authRepository = new AuthRepositoryImpl();
-    const authUseCases = new AuthUseCases(authRepository);
 
     async function login(email: string, password: string) {
         try {
