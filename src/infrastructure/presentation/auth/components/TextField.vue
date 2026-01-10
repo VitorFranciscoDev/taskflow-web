@@ -61,8 +61,8 @@ const value = computed({
   }
 
   .input {
-    background: rgba(15, 23, 42, 0.8);
-    color: white;
+    background: white;
+    color: black;
     width: 300px;
     height: 52px;
     padding: 0 16px;
@@ -71,24 +71,5 @@ const value = computed({
     font-size: 15px;
     outline: none;
     transition: all 0.3s ease;
-  }
-
-  .input::placeholder {
-    color: #64748b;
-    transition: color 0.2s ease;
-  }
-
-  .input:focus {
-    background: rgba(15, 23, 42, 1);
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-  }
-
-  .input:focus::placeholder {
-    color: #94a3b8;
-  }
-
-  .input:hover {
-    border-color: rgba(71, 85, 105, 0.6);
   }
 </style>

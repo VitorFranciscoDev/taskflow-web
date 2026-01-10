@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-import Header from '../components/Header.vue';
+  import { ref } from 'vue';
+  import Header from '../components/Header.vue';
+  import TextField from '../components/TextField.vue';
+
+  const email = ref('');
 
 </script>
 
@@ -8,14 +12,16 @@ import Header from '../components/Header.vue';
     <Header/>
 
     <main class="main">
-      <h1 class="title">Project Management <span class="highlight">Made Simple</span></h1>
+      <h1 class="title">Project Management Made Simple</h1>
 
       <p class="subtitle">Organize your work, collaborate with your team, and boost productivity with our intuitive
         Kanban-style boards.</p>
 
-      <div class="buttons">
-        <button class="startnow">Start Now</button>
-        <button class="seedemo">See Demo</button>
+      <div class="start">
+        <fieldset class="fieldset">
+          <input name="email" type="email" class="input" placeholder="your@email.com">
+        </fieldset>
+        <button class="start-button">Start</button>
       </div>
     </main>
   </div>
@@ -25,18 +31,18 @@ import Header from '../components/Header.vue';
   .background {
     width: 100%;
     height: 100%;
-    background-color: #020617;
+    background-color: white;
   }
 
   .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 150px;
+    padding-top: 130px;
   }
 
   .title {
-    color: white;
+    color: black;
     font-size: 72px;
     max-width: 900px;
     font-weight: 900;
@@ -45,12 +51,8 @@ import Header from '../components/Header.vue';
     margin-bottom: 30px;
   }
 
-  .highlight {
-    color: #2563EB;
-  }
-
   .subtitle {
-    color: rgb(222, 222, 222);
+    color: rgb(62, 62, 62);
     font-size: 20px;
     font-weight: 400;
     line-height: 1.6;
@@ -59,30 +61,38 @@ import Header from '../components/Header.vue';
     max-width: 600px;
   }
 
-  .startnow {
-    padding: 12px 28px;
-    background-color: transparent;
-    color: white;
-    font-weight: 600;
-    font-size: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    margin-right: 20px;
+  .start {
+    display: flex;
+    gap: 15px;
   }
 
-  .seedemo {
-    padding: 12px 50px;
-    background-color: white;
-    color: #2563EB;
-    font-weight: 600;
+  .fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .input {
+    background: white;
+    color: black;
+    width: 300px;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 2px solid rgba(71, 85, 105, 0.4);
     font-size: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .start-button {
+    background-color: black;
+    color: white;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
   }
 </style>
