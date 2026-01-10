@@ -4,6 +4,7 @@ import TextField from '../components/TextField.vue';
 import {ref} from 'vue';
 import Form from "@/infrastructure/presentation/auth/components/Form.vue";
 import NavigateButton from '../components/NavigateButton.vue';
+import Header from '../components/Header.vue';
 
 const email = ref('');
 const password = ref('');
@@ -12,45 +13,41 @@ const password = ref('');
 
 <template>
   <div class="background">
-    <Form>
-      <h1 class="title">Welcome back</h1>
+    <Header/>
 
-      <p class="subtitle">Login with your Taskflow account</p>
+      <Form>
+        <h1 class="title">Welcome back</h1>
 
-      <TextField
-          v-model="email"
-          label="Email"
-          placeholder="your@email.com"
-          type="email"
-      />
+        <p class="subtitle">Login with your Taskflow account</p>
 
-      <TextField
-          v-model="password"
-          label="Password"
-          placeholder="mypassword"
-          type="password"
-      />
+        <TextField
+            v-model="email"
+            label="Email"
+            placeholder="your@email.com"
+            type="email"
+        />
 
-      <Button text="Login"/>
+        <TextField
+            v-model="password"
+            label="Password"
+            placeholder="mypassword"
+            type="password"
+        />
 
-      <NavigateButton
-        text="Doesnt have an account?"
-        linkText="Sign up"
-        to="/signUp"
-      />
-    </Form>
+        <Button text="Login"/>
+      </Form>
   </div>
 </template>
 
 <style scoped>
   .background {
     width: 100%;
-    height: 100%;
-    background-color: #1a1f35;
+    min-height: 100vh;
+    background-color: white;
   }
 
   .title {
-    color: #ffffff;
+    color: #0f172a;
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -58,9 +55,26 @@ const password = ref('');
   }
 
   .subtitle {
-    color: #94a3b8;
+    color: #64748b;
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 32px;
+  }
+
+  .signup {
+    text-align: center;
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 24px;
+  }
+
+  .link {
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .link:hover {
+    opacity: 0.7;
   }
 </style>

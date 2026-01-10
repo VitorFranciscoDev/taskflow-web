@@ -47,7 +47,7 @@ const value = computed({
   }
 
   .label {
-    color: #e2e8f0;
+    color: black;
     font-size: 14px;
     font-weight: 500;
     align-self: flex-start;
@@ -63,7 +63,7 @@ const value = computed({
   .input {
     background: white;
     color: black;
-    width: 300px;
+    width: 350px;
     height: 52px;
     padding: 0 16px;
     border-radius: 12px;

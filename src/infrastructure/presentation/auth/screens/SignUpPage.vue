@@ -4,6 +4,7 @@ import TextField from '../components/TextField.vue';
 import {ref} from 'vue';
 import Form from "@/infrastructure/presentation/auth/components/Form.vue";
 import NavigateButton from '../components/NavigateButton.vue';
+import Header from '../components/Header.vue';
 
 const name = ref('');
 const email = ref('');
@@ -13,6 +14,8 @@ const password = ref('');
 
 <template>
   <div class="background">
+    <Header/>
+
     <Form>
       <h1 class="title">Create your account</h1>
 
@@ -40,12 +43,6 @@ const password = ref('');
       />
 
       <Button text="Sign Up"/>
-
-      <NavigateButton
-        text="Already have an accountt?"
-        linkText="Sign in"
-        to="/login"
-      />
     </Form>
   </div>
 </template>
@@ -53,12 +50,12 @@ const password = ref('');
 <style scoped>
   .background {
     width: 100%;
-    height: 100%;
-    background-color: #1a1f35;
+    min-height: 100vh;
+    background-color: white;
   }
 
   .title {
-    color: #ffffff;
+    color: #0f172a;
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -66,9 +63,26 @@ const password = ref('');
   }
 
   .subtitle {
-    color: #94a3b8;
+    color: #64748b;
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 32px;
+  }
+
+  .signup {
+    text-align: center;
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 24px;
+  }
+
+  .link {
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .link:hover {
+    opacity: 0.7;
   }
 </style>

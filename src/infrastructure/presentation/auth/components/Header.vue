@@ -40,6 +40,10 @@
     padding: 15px 30px;
   }
 
+  .logo {
+    cursor: pointer;
+  }
+
   .landing-page-navigation {
     display: flex;
     gap: 20px;
