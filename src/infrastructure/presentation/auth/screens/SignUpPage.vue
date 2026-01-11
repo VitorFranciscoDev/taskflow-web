@@ -1,21 +1,38 @@
-<script setup>
+<script setup lang="ts">
 import Button from '../components/Button.vue';
 import TextField from '../components/TextField.vue';
-import {ref} from 'vue';
+import { ref } from 'vue';
 import Form from "@/infrastructure/presentation/auth/components/Form.vue";
 import Header from '../components/Header.vue';
+import { User } from '@/domain/entities/user';
+import { useAuthStore } from '../auth_state';
+import { useRouter } from 'vue-router';
+
+const authStore = useAuthStore();
+const router = useRouter();
 
 const name = ref('');
 const email = ref('');
 const password = ref('');
 
+async function handleSubmit() {
+  const newUser: User = {
+    name: name.value,
+    email: email.value,
+    password: password.value,
+  };
+
+  await authStore.register(newUser);
+
+  router.push('/login');
+}
 </script>
 
 <template>
   <div class="background">
     <Header/>
 
-    <Form>
+    <Form @submit.prevent="handleSubmit">
       <h1 class="title">Create your account</h1>
 
       <p class="subtitle">Start to organize your projects</p>

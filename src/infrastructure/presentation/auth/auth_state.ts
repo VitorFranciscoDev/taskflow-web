@@ -10,12 +10,9 @@ export const useAuthStore = defineStore('auth', () => {
     const isLoading = ref(false);
     const error = ref<string | null>(null);
 
-    function setLoading(loading: boolean) {
-        isLoading.value = loading;
-    }
-
     async function login(email: string, password: string) {
-        setLoading(true);
+        isLoading.value = true;
+        error.value = null;
 
         try {
             const loggedUser = await authUseCases.login(email, password);
@@ -25,19 +22,28 @@ export const useAuthStore = defineStore('auth', () => {
         } catch (error) {
             throw error;
         } finally {
-            setLoading(false);
+            isLoading.value = false;
         }
     }
 
     async function register(newUser: User) {
-        setLoading(true);
+        isLoading.value = true;
+        error.value = null;
 
         try {
             await authUseCases.register(newUser);
         } catch (error) {
             throw error;
         } finally {
-            setLoading(false);
+            isLoading.value = false;
         }
+    }
+
+    return {
+        user,
+        isLoading,
+        error,
+        login,
+        register,
     }
 });
