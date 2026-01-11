@@ -3,7 +3,6 @@ import Button from '../components/Button.vue';
 import TextField from '../components/TextField.vue';
 import {ref} from 'vue';
 import Form from "@/infrastructure/presentation/auth/components/Form.vue";
-import NavigateButton from '../components/NavigateButton.vue';
 import Header from '../components/Header.vue';
 
 const name = ref('');

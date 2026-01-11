@@ -19,7 +19,7 @@ export class AuthUseCases {
         return await this.authRepository.login(email, password);
     }
 
-    async addUser(user: User): Promise<void> {
+    async register(user: User): Promise<void> {
         if (user.name.length < 3) {
             throw new Error("Invalid Name");
         }
