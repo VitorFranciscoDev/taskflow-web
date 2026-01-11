@@ -1,7 +1,6 @@
-import {List} from "./list"
+import {TaskList} from "./task_list"
 
 export interface Board {
-    id: number;
     name: string;
-    lists: List[];
+    taskLists: TaskList[];
 }

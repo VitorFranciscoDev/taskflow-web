@@ -1,8 +1,6 @@
 import {Task} from "./task";
 
-export interface List {
-    id: number;
-    boardID: number;
+export interface TaskList {
     name: string;
     tasks: Task[];
 }
