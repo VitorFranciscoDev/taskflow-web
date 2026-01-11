@@ -1,18 +1,25 @@
 import {User} from "@/domain/entities/user";
 import {AuthRepository} from "@/domain/repositories/auth_repository";
-
 import {baseURL} from '@/main'
 
 export class AuthRepositoryImpl implements AuthRepository {
 
-    async login(email: string, password: string): Promise<User> {
-        const response = await fetch(`${baseURL}/login`);
+    async login(email: string, password: string): Promise<void> {
+        const response = await fetch(`${baseURL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
 
-        if (!response.ok) {
-            throw new Error("Login Error");
+        if(!response.ok) {
+            throw new Error("API Error.");
         }
 
-        return response.json();
+        const data = await response.json();
+
+        localStorage.setItem('auth_token', data.token);
     }
 
     async register(user: User): Promise<void> {
@@ -29,7 +36,7 @@ export class AuthRepositoryImpl implements AuthRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Error registering user");
+            throw new Error("API Error.");
         }
     }
 }
