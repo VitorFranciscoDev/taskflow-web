@@ -36,6 +36,8 @@
             label="Email"
             placeholder="your@email.com"
             type="email"
+            :width="22"
+            :height="3"
         />
 
         <TextField
@@ -44,6 +46,8 @@
             label="Password"
             placeholder="mypassword"
             type="password"
+            :width="22"
+            :height="3"
         />
 
         <Button :height="3" :isBackgroundBlack="true" :width="22" text="Sign In"/>

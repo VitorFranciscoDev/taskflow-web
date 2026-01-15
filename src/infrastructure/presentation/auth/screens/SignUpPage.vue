@@ -43,6 +43,8 @@ async function handleSubmit() {
           label="Name"
           placeholder="Your Name"
           type="text"
+          :width="22"
+          :height="3"
       />
 
       <TextField
@@ -51,6 +53,8 @@ async function handleSubmit() {
           label="Email"
           placeholder="your@email.com"
           type="email"
+          :width="22"
+          :height="3"
       />
 
       <TextField
@@ -59,6 +63,8 @@ async function handleSubmit() {
           label="Password"
           placeholder="mypassword"
           type="password"
+          :width="22"
+          :height="3"
       />
 
       <Button :height="3" :isBackgroundBlack="true" :width="22" text="Sign Up"/>
