@@ -7,7 +7,6 @@
 <template>
   <div class="background">
     <Header/>
-    <hr>
     <Main/>
     <Footer/>
   </div>

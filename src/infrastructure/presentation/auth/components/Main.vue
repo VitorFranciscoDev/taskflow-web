@@ -28,7 +28,7 @@ import { useRouter } from 'vue-router';
           placeholder="your@email.com"
           type="email"
         />
-        <Button text="Start" />
+        <Button text="Start" :width="8" :height="3.2" :isBackgroundBlack="true"/>
       </div>
     </main>
 </template>

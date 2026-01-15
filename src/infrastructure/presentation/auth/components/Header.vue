@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { useRouter } from 'vue-router';
   import { RouteDefs } from '@/config/navigation'
+  import Button from "@/infrastructure/presentation/auth/components/Button.vue";
 
   const router = useRouter();
 
@@ -10,16 +11,19 @@
 </script>
 
 <template>
-  <header class="header">
-    <nav class="header__nav">
-      <h1 class="header__nav__logo" @click="navigateToLandingPage">TaskFlow</h1>
+  <div>
+    <header class="header">
+      <nav class="header__nav">
+        <h1 class="header__nav__logo" @click="navigateToLandingPage">TaskFlow</h1>
 
-      <div class="header__nav__auth">
-        <button class="header__nav__auth__signup" @click="navigateToSignUp">Sign Up</button>
-        <button class="header__nav__auth__login" @click="navigateToLogin">Login</button>
-      </div>
-    </nav>
-  </header>
+        <div class="header__nav__auth">
+          <Button text="Sign Up" :width="6" :height="3" :isBackgroundBlack="true"/>
+          <Button text="Sign In" :width="6" :height="3" :is-background-black="false"/>
+        </div>
+      </nav>
+    </header>
+    <hr class="hr">
+  </div>
 </template>
 
 <style scoped>
@@ -48,27 +52,7 @@
     gap: 20px;
   }
 
-  .header__nav__auth__signup {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 5px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.1s ease;
-  }
-
-  .header__nav__auth__signup:hover {
-    background-color: var(--secondary-color);
-  }
-
-  .header__nav__auth__login {
-    background-color: transparent;
-    padding: 1rem 2rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    font-weight: 700;
-    cursor: pointer;
+  .hr {
+    background-color: grey;
   }
 </style>
