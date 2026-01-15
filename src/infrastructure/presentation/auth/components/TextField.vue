@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {computed} from 'vue';
+import { computed } from 'vue';
 
 interface Props {
   modelValue: string;
@@ -7,21 +7,20 @@ interface Props {
   label: string;
   type: string;
   placeholder: string;
+  width: number;
+  height: number;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  type: 'text',
-  placeholder: '',
-});
+defineProps<Props>();
 
 const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>();
 
-const value = computed({
-  get: () => props.modelValue,
-  set: (val) => emit('update:modelValue', val)
-});
+const updateValue = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  emit('update:modelValue', target.value);
+};
 </script>
 
 <template>
@@ -30,10 +29,11 @@ const value = computed({
 
     <fieldset class="fieldset">
       <input
-          v-model="value"
+          :v-model="modelValue"
           :placeholder="placeholder"
           :type="type"
           class="input"
+          :style="{ width: width + 'rem', height: height + 'rem' }"
       >
     </fieldset>
   </div>
@@ -43,13 +43,13 @@ const value = computed({
 .text-field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .label {
-  color: black;
-  font-size: 14px;
+  color: var(--primary-color);
+  font-size: 0.9em;
   font-weight: 500;
   align-self: flex-start;
   letter-spacing: 0.3px;
@@ -57,20 +57,15 @@ const value = computed({
 
 .fieldset {
   border: none;
-  margin: 0;
-  padding: 0;
 }
 
 .input {
-  background: white;
-  color: black;
-  width: 350px;
-  height: 52px;
-  padding: 0 16px;
-  border-radius: 12px;
-  border: 2px solid rgba(71, 85, 105, 0.4);
-  font-size: 15px;
-  outline: none;
+  background: var(--background-color);
+  color: var(--primary-color);
+  padding: 0 1rem;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-color);
+  font-size: 1em;
   transition: all 0.3s ease;
 }
 

@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
     <footer class="footer">
       <h3 class="footer__title">Inspired by</h3>
@@ -27,7 +23,7 @@
 
 <style scoped>
     .footer {
-        margin-top: 10rem;
+        margin-top: 3rem;
         display: flex;
         flex-direction: column;
         align-items: center;

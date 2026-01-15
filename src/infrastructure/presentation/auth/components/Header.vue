@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-  import { useRouter } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import { RouteDefs } from '@/config/navigation'
   import Button from "@/infrastructure/presentation/auth/components/Button.vue";
 
   const router = useRouter();
+  const route = useRoute();
 
   const navigateToSignIn = () => router.push(RouteDefs.LoginPage.path);
   const navigateToSignUp = () => router.push(RouteDefs.SignUpPage.path);
@@ -17,12 +18,12 @@
         <h1 class="header__nav__logo" @click="navigateToLandingPage">TaskFlow</h1>
 
         <div class="header__nav__auth">
-          <Button text="Sign Up" :width="6" :height="3" :isBackgroundBlack="true" @click="navigateToSignUp"/>
-          <Button text="Sign In" :width="6" :height="3" :is-background-black="false" @click="navigateToSignIn"/>
+          <Button v-if="route.path === RouteDefs.LandingPage.path || route.path === RouteDefs.LoginPage.path" text="Sign Up" :width="6" :height="3" :isBackgroundBlack="true" @click="navigateToSignUp"/>
+          <Button v-if="route.path === RouteDefs.LandingPage.path || route.path === RouteDefs.SignUpPage.path" text="Sign In" :width="6" :height="3" :is-background-black="false" @click="navigateToSignIn"/>
         </div>
       </nav>
     </header>
-    <hr class="hr">
+    <hr>
   </div>
 </template>
 
@@ -49,10 +50,6 @@
 
   .header__nav__auth {
     display: flex;
-    gap: 20px;
+    gap: 2rem;
   }
-
-  .hr {
-    background-color: grey;
-  }
-</style>
+  </style>

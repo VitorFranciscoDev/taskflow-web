@@ -1,17 +1,19 @@
 <script lang="ts" setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 import TextField from './TextField.vue';
 import Button from './Button.vue';
-import {useRouter} from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
+const name = ref('');
 const email = ref('');
 
 function handleSubmit() {
   router.push({
     path: '/signUp',
     state: {
+      name: name.value,
       email: email.value,
     }
   });
@@ -27,13 +29,24 @@ function handleSubmit() {
 
     <div class="main__start">
       <TextField
+          v-model="name"
+          :has-label="false"
+          label=""
+          placeholder="Name"
+          type="text"
+          :width="10"
+          :height="3"
+      />
+      <TextField
           v-model="email"
           :has-label="false"
-          label="Email"
+          label=""
           placeholder="your@email.com"
           type="email"
+          :width="10"
+          :height="3"
       />
-      <Button :height="3.2" :isBackgroundBlack="true" :width="8" text="Start" @click="handleSubmit"/>
+      <Button :height="3" :isBackgroundBlack="true" :width="10" text="Start" @click="handleSubmit"/>
     </div>
   </main>
 </template>
@@ -43,17 +56,40 @@ function handleSubmit() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 140px;
-  gap: 30px;
+  padding-top: 5rem;
+  gap: 2rem;
 }
 
 .main__title {
-  color: var(--primary-color);
   font-size: 4.5em;
-  max-width: 900px;
+  max-width: 60rem;
   font-weight: 900;
   line-height: 1.2;
   text-align: center;
+  
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #4a4a4a 30%,
+    #c0c0c0 50%,
+    #4a4a4a 70%,
+    #000000 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: gradient-slide 4s linear infinite;
+}
+
+@keyframes gradient-slide {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }
 
 .main__subtitle {
@@ -62,39 +98,11 @@ function handleSubmit() {
   font-weight: 400;
   line-height: 1.6;
   text-align: center;
-  max-width: 600px;
+  max-width: 36rem;
 }
 
 .main__start {
   display: flex;
-  gap: 15px;
-}
-
-.main__start__fieldset {
-  border: none;
-}
-
-.main__start__fieldset__input {
-  background-color: var(--background-color);
-  color: var(--primary-color);
-  width: 300px;
-  height: 52px;
-  padding: 0 16px;
-  border-radius: 10px;
-  border: 2px solid rgba(71, 85, 105, 0.4);
-  font-size: 15px;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.main__start__button {
-  background-color: black;
-  color: white;
-  width: 150px;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
+  gap: 1rem;
 }
 </style>
