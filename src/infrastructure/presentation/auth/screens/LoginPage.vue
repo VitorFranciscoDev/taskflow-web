@@ -1,24 +1,35 @@
 <script lang="ts" setup>
-import Button from '../components/Button.vue';
-import TextField from '../components/TextField.vue';
-import { ref } from 'vue';
-import Form from "@/infrastructure/presentation/auth/components/Form.vue";
-import NavigateButton from '../components/NavigateButton.vue';
-import Header from '../components/Header.vue';
+  import Button from '../components/Button.vue';
+  import TextField from '../components/TextField.vue';
+  import { ref } from 'vue';
+  import Form from "@/infrastructure/presentation/auth/components/Form.vue";
+  import Header from '../components/Header.vue';
+import { useAuthStore } from '../auth_state';
+import { useRouter } from 'vue-router';
 
-const email = ref('');
-const password = ref('');
+  const authStore = useAuthStore();
+  const router = useRouter();
 
+  const email = ref('');
+  const password = ref('');
+
+  async function handleSubmit() {
+    await authStore.login(email, password);
+
+    router.push('/login');
+  }
 </script>
 
 <template>
   <div class="background">
     <Header/>
+    <hr>
 
+    <main class="background__main">
       <Form>
-        <h1 class="title">Welcome back</h1>
+        <h1 class="background__main__form__title">Welcome back</h1>
 
-        <p class="subtitle">Login with your Taskflow account</p>
+        <p class="background__main__form__subtitle">Login with your Taskflow account</p>
 
         <TextField
             v-model="email"
@@ -36,17 +47,24 @@ const password = ref('');
 
         <Button text="Login"/>
       </Form>
+    </main>
   </div>
 </template>
 
 <style scoped>
   .background {
     width: 100%;
-    min-height: 100vh;
-    background-color: white;
+    height: 100%;
+    background-color: var(--background-color);
   }
 
-  .title {
+  .background__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } 
+
+  .background__main__form__title {
     color: #0f172a;
     font-size: 32px;
     font-weight: 700;
@@ -54,27 +72,10 @@ const password = ref('');
     margin-bottom: 8px;
   }
 
-  .subtitle {
+  .background__main__form__subtitle {
     color: #64748b;
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 32px;
-  }
-
-  .signup {
-    text-align: center;
-    font-size: 14px;
-    color: #64748b;
-    margin-top: 24px;
-  }
-
-  .link {
-    color: #0f172a;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .link:hover {
-    opacity: 0.7;
   }
 </style>
