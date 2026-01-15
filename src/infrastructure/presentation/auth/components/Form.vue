@@ -1,29 +1,27 @@
 <script lang="ts" setup>
-  interface Props {
-    onSubmit?: (event: Event) => void;
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    onSubmit: (event: Event) => event.preventDefault(),
-  })
+const emit = defineEmits<{
+  (e: 'submit', event: Event): void
+}>()
 </script>
 
 <template>
-  <form class="form" onsubmit="props.onSubmit">
+  <form class="form" @submit="emit('submit', $event)">
     <slot/>
   </form>
 </template>
 
 <style scoped>
-  .form {
-    background-color: transparent;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    padding: 50px 24px;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.form {
+  background-color: var(--background-color);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgb(150, 150, 158);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>

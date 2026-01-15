@@ -5,7 +5,7 @@
 
   const router = useRouter();
 
-  const navigateToLogin = () => router.push(RouteDefs.LoginPage.path);
+  const navigateToSignIn = () => router.push(RouteDefs.LoginPage.path);
   const navigateToSignUp = () => router.push(RouteDefs.SignUpPage.path);
   const navigateToLandingPage = () => router.push(RouteDefs.LandingPage.path);
 </script>
@@ -17,8 +17,8 @@
         <h1 class="header__nav__logo" @click="navigateToLandingPage">TaskFlow</h1>
 
         <div class="header__nav__auth">
-          <Button text="Sign Up" :width="6" :height="3" :isBackgroundBlack="true"/>
-          <Button text="Sign In" :width="6" :height="3" :is-background-black="false"/>
+          <Button text="Sign Up" :width="6" :height="3" :isBackgroundBlack="true" @click="navigateToSignUp"/>
+          <Button text="Sign In" :width="6" :height="3" :is-background-black="false" @click="navigateToSignIn"/>
         </div>
       </nav>
     </header>

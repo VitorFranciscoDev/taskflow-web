@@ -10,7 +10,7 @@ import Header from "@/infrastructure/presentation/auth/components/Header.vue";
 <style>
   :root {
     --primary-color: black;
-    --secondary-color: #434343;
+    --secondary-color: #535353;
     --background-color: white;
   }
 

@@ -23,7 +23,6 @@
 <template>
   <div class="background">
     <Header/>
-    <hr>
 
     <main class="background__main">
       <Form>
@@ -33,6 +32,7 @@
 
         <TextField
             v-model="email"
+            :has-label="true"
             label="Email"
             placeholder="your@email.com"
             type="email"
@@ -40,12 +40,13 @@
 
         <TextField
             v-model="password"
+            :has-label="true"
             label="Password"
             placeholder="mypassword"
             type="password"
         />
 
-        <Button text="Login"/>
+        <Button :height="3" :isBackgroundBlack="true" :width="22" text="Sign In"/>
       </Form>
     </main>
   </div>

@@ -1,31 +1,31 @@
-<script setup lang="ts">
-  import Button from '../components/Button.vue';
-  import TextField from '../components/TextField.vue';
-  import { ref } from 'vue';
-  import Form from "@/infrastructure/presentation/auth/components/Form.vue";
-  import Header from '../components/Header.vue';
-  import { User } from '@/domain/entities/user';
-  import { useAuthStore } from '../auth_state';
-  import { useRouter } from 'vue-router';
+<script lang="ts" setup>
+import Button from '../components/Button.vue';
+import TextField from '../components/TextField.vue';
+import {ref} from 'vue';
+import Form from "@/infrastructure/presentation/auth/components/Form.vue";
+import Header from '../components/Header.vue';
+import {User} from '@/domain/entities/user';
+import {useAuthStore} from '../auth_state';
+import {useRouter} from 'vue-router';
 
-  const authStore = useAuthStore();
-  const router = useRouter();
+const authStore = useAuthStore();
+const router = useRouter();
 
-  const name = ref('');
-  const email = ref('');
-  const password = ref('');
+const password = ref('');
+const email = router.options.history.state.email as string;
+const name = ref('');
 
-  async function handleSubmit() {
-    const newUser: User = {
-      name: name.value,
-      email: email.value,
-      password: password.value,
-    };
+async function handleSubmit() {
+  const newUser: User = {
+    name: name.value,
+    email: email,
+    password: password.value,
+  };
 
-    await authStore.register(newUser);
+  await authStore.register(newUser);
 
-    router.push('/login');
-  }
+  router.push('/login');
+}
 </script>
 
 <template>
@@ -39,6 +39,7 @@
 
       <TextField
           v-model="name"
+          :has-label="true"
           label="Name"
           placeholder="Your Name"
           type="text"
@@ -46,6 +47,7 @@
 
       <TextField
           v-model="email"
+          :has-label="true"
           label="Email"
           placeholder="your@email.com"
           type="email"
@@ -53,52 +55,53 @@
 
       <TextField
           v-model="password"
+          :has-label="true"
           label="Password"
-          placeholder="12345678"
+          placeholder="mypassword"
           type="password"
       />
 
-      <Button text="Sign Up"/>
+      <Button :height="3" :isBackgroundBlack="true" :width="22" text="Sign Up"/>
     </Form>
   </div>
 </template>
 
 <style scoped>
-  .background {
-    width: 100%;
-    min-height: 100vh;
-    background-color: white;
-  }
+.background {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
 
-  .title {
-    color: #0f172a;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-  }
+.title {
+  color: #0f172a;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
 
-  .subtitle {
-    color: #64748b;
-    font-size: 15px;
-    font-weight: 400;
-    margin-bottom: 32px;
-  }
+.subtitle {
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
 
-  .signup {
-    text-align: center;
-    font-size: 14px;
-    color: #64748b;
-    margin-top: 24px;
-  }
+.signup {
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 24px;
+}
 
-  .link {
-    color: #0f172a;
-    text-decoration: none;
-    font-weight: 600;
-  }
+.link {
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-  .link:hover {
-    opacity: 0.7;
-  }
+.link:hover {
+  opacity: 0.7;
+}
 </style>

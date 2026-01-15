@@ -40,37 +40,41 @@ const value = computed({
 </template>
 
 <style scoped>
-  .text-field {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
 
-  .label {
-    color: black;
-    font-size: 14px;
-    font-weight: 500;
-    align-self: flex-start;
-    letter-spacing: 0.3px;
-  }
+.label {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  align-self: flex-start;
+  letter-spacing: 0.3px;
+}
 
-  .fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-  }
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .input {
-    background: white;
-    color: black;
-    width: 350px;
-    height: 52px;
-    padding: 0 16px;
-    border-radius: 12px;
-    border: 2px solid rgba(71, 85, 105, 0.4);
-    font-size: 15px;
-    outline: none;
-    transition: all 0.3s ease;
-  }
+.input {
+  background: white;
+  color: black;
+  width: 350px;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(71, 85, 105, 0.4);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border: 2.5px solid var(--primary-color);
+}
 </style>
