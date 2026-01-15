@@ -3,6 +3,7 @@ import {computed} from 'vue';
 
 interface Props {
   modelValue: string;
+  hasLabel: boolean;
   label: string;
   type: string;
   placeholder: string;
@@ -25,7 +26,7 @@ const value = computed({
 
 <template>
   <div class="text-field">
-    <label class="label">{{ label }}</label>
+    <label v-if="hasLabel" class="label">{{ label }}</label>
 
     <fieldset class="fieldset">
       <input

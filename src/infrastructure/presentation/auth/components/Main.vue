@@ -1,3 +1,18 @@
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import TextField from './TextField.vue';
+  import Button from './Button.vue';
+import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
+  const email = ref('');
+
+  function handleSubmit() {
+    router.push("/signUp");
+  }
+</script>
+
 <template>
     <main class="main">
       <h1 class="main__title">Project Management Made Simple</h1>
@@ -6,10 +21,14 @@
         Kanban-style boards.</p>
 
       <div class="main__start">
-        <fieldset class="main__start__fieldset">
-          <input name="email" type="email" class="main__start__fieldset__input" placeholder="your@email.com">
-        </fieldset>
-        <button class="main__start__button">Start</button>
+        <TextField 
+          v-model="email"
+          :has-label="false"
+          label="Email"
+          placeholder="your@email.com"
+          type="email"
+        />
+        <Button text="Start" />
       </div>
     </main>
 </template>

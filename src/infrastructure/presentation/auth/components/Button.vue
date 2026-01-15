@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 
-interface Props {
-  text?: string;
-}
+  interface Props {
+    text: string;
+    width: number;
+    height: number;
+    event?: () => void;
+  }
 
-const props = withDefaults(defineProps<Props>(), {
-  text: ''
-})
+  const props = defineProps<Props>();
 
 </script>
 
 <template>
-  <button class="button">{{ props.text }}</button>
+  <button @click="event" class="button">{{ props.text }}</button>
 </template>
 
 <style scoped>

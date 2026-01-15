@@ -4,8 +4,8 @@
   import { ref } from 'vue';
   import Form from "@/infrastructure/presentation/auth/components/Form.vue";
   import Header from '../components/Header.vue';
-import { useAuthStore } from '../auth_state';
-import { useRouter } from 'vue-router';
+  import { useAuthStore } from '../auth_state';
+  import { useRouter } from 'vue-router';
 
   const authStore = useAuthStore();
   const router = useRouter();
