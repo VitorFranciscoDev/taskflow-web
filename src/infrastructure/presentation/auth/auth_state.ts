@@ -1,6 +1,4 @@
-import {User} from "@/domain/entities/user";
-import {AuthUseCases} from "@/domain/usecases/auth_usecases";
-import {AuthRepositoryImpl} from "@/infrastructure/repositories/auth_repository_impl";
+import {User, UserCredentials} from "@/domain/entities/user";
 import {defineStore} from "pinia";
 import {ref} from "vue";
 import {authUseCases} from "@/infrastructure/infrastructure";
@@ -14,8 +12,10 @@ export const useAuthStore = defineStore('auth', () => {
         isLoading.value = true;
         error.value = null;
 
+        const credentials: UserCredentials = {email, password};
+
         try {
-            await authUseCases.login(email, password);
+            await authUseCases.login(credentials);
         } catch (error) {
             throw error;
         } finally {
@@ -23,12 +23,12 @@ export const useAuthStore = defineStore('auth', () => {
         }
     }
 
-    async function register(newUser: User) {
+    async function register(credentials: UserCredentials) {
         isLoading.value = true;
         error.value = null;
 
         try {
-            await authUseCases.register(newUser);
+            await authUseCases.register(credentials);
         } catch (error) {
             throw error;
         } finally {

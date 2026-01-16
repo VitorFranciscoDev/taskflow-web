@@ -14,9 +14,8 @@
   const password = ref('');
 
   async function handleSubmit() {
-    await authStore.login(email, password);
-
-    router.push('/login');
+    console.log('jandleSubmit called');
+    await authStore.login(email.value, password.value);
   }
 </script>
 
@@ -45,7 +44,7 @@
             type="password"
         />
 
-        <Button text="Login"/>
+        <Button text="Login" @click="handleSubmit"/>
       </Form>
     </main>
   </div>

@@ -1,6 +1,7 @@
-import { User } from "../entities/user";
+import {UserCredentials} from "../entities/user";
 
 export interface AuthRepository {
-    login(email: string, password: string): Promise<void>;
-    register(user: User): Promise<void>;
+    login(credentials: UserCredentials): Promise<void>;
+
+    register(credentials: UserCredentials): Promise<void>;
 }

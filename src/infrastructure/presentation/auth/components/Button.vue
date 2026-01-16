@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 
-  interface Props {
-    text: string;
-    width: number;
-    height: number;
-    event?: () => void;
-  }
+interface Props {
+  text: string;
+  width?: number;
+  height?: number;
+}
 
-  const props = defineProps<Props>();
+const props = defineProps<Props>();
 
 </script>
 
@@ -16,15 +15,15 @@
 </template>
 
 <style scoped>
-  .button {
-    width: 350px;
-    height: 52px;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-    font-size: 15px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-  }
+.button {
+  width: 350px;
+  height: 52px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
 </style>

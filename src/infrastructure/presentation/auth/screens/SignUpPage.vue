@@ -4,7 +4,7 @@
   import { ref } from 'vue';
   import Form from "@/infrastructure/presentation/auth/components/Form.vue";
   import Header from '../components/Header.vue';
-  import { User } from '@/domain/entities/user';
+  import {User, UserCredentials} from '@/domain/entities/user';
   import { useAuthStore } from '../auth_state';
   import { useRouter } from 'vue-router';
 
@@ -16,15 +16,14 @@
   const password = ref('');
 
   async function handleSubmit() {
-    const newUser: User = {
-      name: name.value,
+    const credentials: UserCredentials = {
       email: email.value,
       password: password.value,
     };
 
-    await authStore.register(newUser);
+    await authStore.register(credentials);
 
-    router.push('/login');
+    await router.push('/login');
   }
 </script>
 
@@ -38,7 +37,6 @@
       <p class="subtitle">Start to organize your projects</p>
 
       <TextField
-          v-model="name"
           label="Name"
           placeholder="Your Name"
           type="text"
@@ -58,7 +56,7 @@
           type="password"
       />
 
-      <Button text="Sign Up"/>
+      <Button text="Sign Up" :event="handleSubmit"/>
     </Form>
   </div>
 </template>
