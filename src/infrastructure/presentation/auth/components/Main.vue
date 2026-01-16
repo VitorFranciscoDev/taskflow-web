@@ -56,8 +56,9 @@ function handleSubmit() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 12rem;
   gap: 2rem;
+  flex: 1;
 }
 
 .main__title {

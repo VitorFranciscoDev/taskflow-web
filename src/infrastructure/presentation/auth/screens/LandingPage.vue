@@ -17,5 +17,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
   }
 </style>

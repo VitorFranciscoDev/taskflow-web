@@ -23,6 +23,6 @@ import Header from "@/infrastructure/presentation/auth/components/Header.vue";
   }
 
   body, #app {
-    height: 100%;
+    height: 100vh;
   }
 </style>
